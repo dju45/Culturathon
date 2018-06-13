@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Workofarts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Picture</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workOfArt in workOfArts %}
+            <tr>
+                <td><a href="{{ path('workofart_show', { 'id': workOfArt.id }) }}">{{ workOfArt.id }}</a></td>
+                <td>{{ workOfArt.title }}</td>
+                <td>{{ workOfArt.type }}</td>
+                <td>{{ workOfArt.size }}</td>
+                <td>{{ workOfArt.description }}</td>
+                <td>{{ workOfArt.picture }}</td>
+                <td>{{ workOfArt.creationDate }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('workofart_show', { 'id': workOfArt.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('workofart_edit', { 'id': workOfArt.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('workofart_new') }}">Create a new workOfArt</a>
+        </li>
+    </ul>
+{% endblock %}
