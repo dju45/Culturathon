@@ -10,14 +10,4 @@ namespace AppBundle\Repository;
  */
 class ArtistRepository extends \Doctrine\ORM\EntityRepository
 {
-//    public function seenArtists ($user)
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->join('a.artworks', 'a')
-//            ->join('a.users', 'u')
-//            ->where('u.id = :user ')
-//            ->setParameter('user', $user)
-//            ->getQuery()
-//            ->getResult();
-//    }
 }

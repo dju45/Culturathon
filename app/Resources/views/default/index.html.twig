@@ -38,35 +38,6 @@
             </form>
         </div>
     </nav>
-    {#<div>#}
-    {#{% for current in currents %}#}
-    {#<h3>{{ current.name }}</h3>#}
-    {#{% if current.name is same as ('Impressionisme') %}#}
-    {#<h4>{{ nbImpressionism }}</h4>#}
-    {#<ul>#}
-    {#{% for impressionism in impressionisms %}#}
-    {#<li>{{ impressionism.title }}</li>#}
-    {#{% endfor %}#}
-    {#</ul>#}
-    {#{% endif %}#}
-    {#{% if current.name is same as ('Cubisme') %}#}
-    {#<h4>{{ nbCubism }}</h4>#}
-    {#<ul>#}
-    {#{% for cubism in cubisms %}#}
-    {#<li>{{ cubism.title }}</li>#}
-    {#{% endfor %}#}
-    {#</ul>#}
-    {#{% endif %}#}
-    {#{% if current.name is same as ('Fauvisme') %}#}
-    {#<h4>{{ nbFauvism }}</h4>#}
-    {#<ul>#}
-    {#{% for fauvism in fauvisms %}#}
-    {#<li>{{ fauvism.title }}</li>#}
-    {#{% endfor %}#}
-    {#</ul>#}
-    {#{% endif %}#}
-    {#{% endfor %}#}
-    {#</div>#}
     <div>
         {% for current, artworks in artworksByCurrent %}
             <h2>{{ current }}</h2>
