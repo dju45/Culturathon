@@ -36,6 +36,12 @@ class User extends BaseUser
      */
     private $lastname;
 
+    /**
+     * Many Users visit many Artworks.
+     * @ORM\ManyToMany(targetEntity="Artwork", mappedBy="users")
+     */
+    private $artworks;
+
     public function __construct()
     {
         parent::__construct();
@@ -99,4 +105,38 @@ class User extends BaseUser
         return $this->lastname;
     }
 
+
+    /**
+     * Add artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     *
+     * @return User
+     */
+    public function addArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks[] = $artwork;
+
+        return $this;
+    }
+
+    /**
+     * Remove artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     */
+    public function removeArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks->removeElement($artwork);
+    }
+
+    /**
+     * Get artworks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtworks()
+    {
+        return $this->artworks;
+    }
 }

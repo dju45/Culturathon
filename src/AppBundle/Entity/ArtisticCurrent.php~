@@ -63,3 +63,4 @@ class ArtisticCurrent
         return $this->name;
     }
 }
+
