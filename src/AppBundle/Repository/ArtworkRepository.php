@@ -22,9 +22,11 @@ class ArtworkRepository extends \Doctrine\ORM\EntityRepository
     public function seenArtworksInOneCurrent($user, $current)
     {
         return $this->createQueryBuilder('ar')
-            ->where('ar.users = :user')
+            ->join('ar.users', 'u')
+            ->where('u.id = :user ')
             ->setParameter('user', $user)
-            ->andWhere('ar.current = :current')
+            ->join('ar.current', 'c')
+            ->andWhere('c.name = :current')
             ->setParameter('current', $current)
             ->getQuery()
             ->getResult();
