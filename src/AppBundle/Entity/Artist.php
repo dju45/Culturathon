@@ -63,6 +63,10 @@ class Artist
      */
     private $biography;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="artist")
+     */
+    private $artworks;
 
     /**
      * Get id
@@ -216,5 +220,46 @@ class Artist
     public function getBiography()
     {
         return $this->biography;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artworks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     *
+     * @return Artist
+     */
+    public function addArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks[] = $artwork;
+
+        return $this;
+    }
+
+    /**
+     * Remove artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     */
+    public function removeArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks->removeElement($artwork);
+    }
+
+    /**
+     * Get artworks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtworks()
+    {
+        return $this->artworks;
     }
 }

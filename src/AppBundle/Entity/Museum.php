@@ -42,6 +42,10 @@ class Museum
      */
     private $address;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="museum")
+     */
+    private $artworks;
 
     /**
      * Get id
@@ -123,5 +127,46 @@ class Museum
     public function getAddress()
     {
         return $this->address;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artworks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     *
+     * @return Museum
+     */
+    public function addArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks[] = $artwork;
+
+        return $this;
+    }
+
+    /**
+     * Remove artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     */
+    public function removeArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks->removeElement($artwork);
+    }
+
+    /**
+     * Get artworks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtworks()
+    {
+        return $this->artworks;
     }
 }
