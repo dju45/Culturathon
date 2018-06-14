@@ -11,7 +11,8 @@
                 <th>Type</th>
                 <th>Size</th>
                 <th>Description</th>
-                <th>Picture</th>
+                <th>Image</th>
+                <th>Updateat</th>
                 <th>Creationdate</th>
                 <th>Actions</th>
             </tr>
@@ -24,8 +25,9 @@
                 <td>{{ artwork.type }}</td>
                 <td>{{ artwork.size }}</td>
                 <td>{{ artwork.description }}</td>
-                <td>{{ artwork.picture }}</td>
-                <td>{{ artwork.creationDate }}</td>
+                <td>{{ artwork.image }}</td>
+                <td>{% if artwork.updateAt %}{{ artwork.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if artwork.creationDate %}{{ artwork.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
