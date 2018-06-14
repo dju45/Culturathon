@@ -1,5 +1,29 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
 
+/* Classe principale de la barre de navigation */
+.bgnav {
+  /* Couleur de fond de la barre de navigation */
+  background-color: #F8F8F8;
+  border-color: #E7E7E7;
+}
+.accueil {
+  background-image: url('../images/background3.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  height:100vh;
+}
+
+.texthome{
+
+  height:50vh;
+
+}
+
+
+
+
+
 *{
   margin: 0;
   padding:0;
@@ -71,3 +95,4 @@ figcaption{
 figcaption:hover{
   color: #fff;
 }
+
