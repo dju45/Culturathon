@@ -8,6 +8,7 @@
 
 namespace AppBundle\Repository;
 
+
 use AppBundle\Entity\ArtisticCurrent;
 use AppTestBundle\Entity\FunctionalTests\User;
 

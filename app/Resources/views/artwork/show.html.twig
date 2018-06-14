@@ -26,12 +26,16 @@
                 <td>{{ artwork.description }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
-                <td>{{ artwork.picture }}</td>
+                <th>Image</th>
+                <td>{{ artwork.image }}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if artwork.updateAt %}{{ artwork.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Creationdate</th>
-                <td>{{ artwork.creationDate }}</td>
+                <td>{% if artwork.creationDate %}{{ artwork.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

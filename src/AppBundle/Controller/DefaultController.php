@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+
 use AppBundle\Entity\ArtisticCurrent;
 use AppBundle\Entity\Artwork;
 use FOS\UserBundle\Model\UserInterface;
@@ -60,6 +61,29 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'artworksByCurrent' => $artworks,
         ]);
+    }
+
+
+
+
+
+    /**
+     * @Route("/pokedex", name="pokedex")
+     */
+    public function pokedexAction()
+    {
+        return $this->render('default/pokedex.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+
+    /**
+     * @Route("/museum", name="museum")
+     */
+    public function museumAction()
+    {
+
+        return $this->render('museum/index.html.twig');
     }
 
 
