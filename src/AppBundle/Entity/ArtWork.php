@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WorkOfArt
+ * ArtWork
  *
  * @ORM\Table(name="work_of_art")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkOfArtRepository")
  */
-class WorkOfArt
+class ArtWork
 {
     /**
      * @var int
@@ -79,7 +79,7 @@ class WorkOfArt
      *
      * @param string $title
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setTitle($title)
     {
@@ -103,7 +103,7 @@ class WorkOfArt
      *
      * @param string $type
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setType($type)
     {
@@ -127,7 +127,7 @@ class WorkOfArt
      *
      * @param string $size
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setSize($size)
     {
@@ -151,7 +151,7 @@ class WorkOfArt
      *
      * @param string $description
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setDescription($description)
     {
@@ -175,7 +175,7 @@ class WorkOfArt
      *
      * @param string $picture
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setPicture($picture)
     {
@@ -199,7 +199,7 @@ class WorkOfArt
      *
      * @param string $creationDate
      *
-     * @return WorkOfArt
+     * @return ArtWork
      */
     public function setCreationDate($creationDate)
     {

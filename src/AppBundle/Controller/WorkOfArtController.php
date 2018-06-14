@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\WorkOfArt;
+use AppBundle\Entity\ArtWork;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class WorkOfArtController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $workOfArts = $em->getRepository('AppBundle:WorkOfArt')->findAll();
+        $workOfArts = $em->getRepository('AppBundle:ArtWork')->findAll();
 
         return $this->render('workofart/index.html.twig', array(
             'workOfArts' => $workOfArts,
@@ -39,7 +39,7 @@ class WorkOfArtController extends Controller
      */
     public function newAction(Request $request)
     {
-        $workOfArt = new Workofart();
+        $workOfArt = new ArtWork();
         $form = $this->createForm('AppBundle\Form\WorkOfArtType', $workOfArt);
         $form->handleRequest($request);
 
@@ -63,7 +63,7 @@ class WorkOfArtController extends Controller
      * @Route("/{id}", name="workofart_show")
      * @Method("GET")
      */
-    public function showAction(WorkOfArt $workOfArt)
+    public function showAction(ArtWork $workOfArt)
     {
         $deleteForm = $this->createDeleteForm($workOfArt);
 
@@ -79,7 +79,7 @@ class WorkOfArtController extends Controller
      * @Route("/{id}/edit", name="workofart_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, WorkOfArt $workOfArt)
+    public function editAction(Request $request, ArtWork $workOfArt)
     {
         $deleteForm = $this->createDeleteForm($workOfArt);
         $editForm = $this->createForm('AppBundle\Form\WorkOfArtType', $workOfArt);
@@ -104,7 +104,7 @@ class WorkOfArtController extends Controller
      * @Route("/{id}", name="workofart_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, WorkOfArt $workOfArt)
+    public function deleteAction(Request $request, ArtWork $workOfArt)
     {
         $form = $this->createDeleteForm($workOfArt);
         $form->handleRequest($request);
@@ -121,11 +121,11 @@ class WorkOfArtController extends Controller
     /**
      * Creates a form to delete a workOfArt entity.
      *
-     * @param WorkOfArt $workOfArt The workOfArt entity
+     * @param ArtWork $workOfArt The workOfArt entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(WorkOfArt $workOfArt)
+    private function createDeleteForm(ArtWork $workOfArt)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('workofart_delete', array('id' => $workOfArt->getId())))

@@ -20,7 +20,7 @@ class WorkOfArtType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\WorkOfArt'
+            'data_class' => 'AppBundle\Entity\ArtWork'
         ));
     }
 
