@@ -24,11 +24,11 @@ class DefaultController extends Controller
     /**
      * @Route("/pokedex", name="pokedex")
      */
-    public function pokedexAction(Request $request)
+    public function pokedexAction()
     {
-        // replace this example code with whatever you need
         return $this->render('default/pokedex.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
 }
