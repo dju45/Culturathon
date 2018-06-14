@@ -7,6 +7,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.museum_img: /uploads/images/museum
+    app.path.artwork_img: /uploads/images/artwork
 
 framework:
     #esi: ~
@@ -81,8 +83,58 @@ fos_user:
                 type: AppBundle\Form\RegistrationType
 
 easy_admin:
+    design:
+            brand_color: 'black'
+
     entities:
         # change the following to the namespaces of your own entities
-        - AppBundle\Entity\Museum
-        - AppBundle\Entity\ArtisticCurrent
-        - AppBundle\Entity\Artwork
+#        - AppBundle\Entity\Museum
+#        - AppBundle\Entity\ArtisticCurrent
+#        - AppBundle\Entity\Artwork
+#        - AppBundle\Entity\Artist
+          Museum:
+              class: AppBundle\Entity\Museum
+              form:
+                  title:    "Ajout de Musée"
+                  fields:
+                  - 'name'
+                  - { property: 'imageFile', type: 'vich_image' }
+                  - 'city'
+                  - 'address'
+                  - 'artworks'
+
+          ArtisticCurrent:
+              class: AppBundle\Entity\ArtisticCurrent
+          Artwork:
+              class: AppBundle\Entity\Artwork
+              form:
+                  title:    "Ajout d'oeuvre"
+                  fields:
+                      - 'type'
+                      - 'size'
+                      - 'description'
+                      - { property: 'imageFile', type: 'vich_image' }
+                      - 'creationDate'
+                      - 'users'
+                      - 'current'
+                      - 'museum'
+                      - 'artist'
+              edit:
+                  title:    "Modification de l'oeuvre"
+
+
+          Artist:
+              class: AppBundle\Entity\Artist
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+            museum_img:
+                    uri_prefix:         '%app.path.museum_img%'
+                    upload_destination: '%kernel.root_dir%/../web%app.path.museum_img %'
+                    namer: vich_uploader.namer_origname
+
+            artwork_img:
+                    uri_prefix:         '%app.path.artwork_img%'
+                    upload_destination: '%kernel.root_dir%/../web%app.path.artwork_img%'
+                    namer: vich_uploader.namer_origname
