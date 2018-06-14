@@ -262,4 +262,9 @@ class Artist
     {
         return $this->artworks;
     }
+
+    public function __toString()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
 }

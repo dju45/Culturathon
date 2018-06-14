@@ -86,3 +86,4 @@ easy_admin:
         - AppBundle\Entity\Museum
         - AppBundle\Entity\ArtisticCurrent
         - AppBundle\Entity\Artwork
+        - AppBundle\Entity\Artist
