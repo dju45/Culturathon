@@ -63,6 +63,30 @@ class Artwork
      */
     private $creationDate;
 
+    /**
+     * Many Artworks have Many Users.
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="artworks")
+     *
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ArtisticCurrent", inversedBy="artworks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $current;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Museum", inversedBy="artworks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $museum;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Artist", inversedBy="artworks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $artist;
 
     /**
      * Get id
@@ -217,5 +241,117 @@ class Artwork
     {
         return $this->creationDate;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Artwork
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set current
+     *
+     * @param \AppBundle\Entity\ArtisticCurrent $current
+     *
+     * @return Artwork
+     */
+    public function setCurrent(\AppBundle\Entity\ArtisticCurrent $current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * Get current
+     *
+     * @return \AppBundle\Entity\ArtisticCurrent
+     */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * Set museum
+     *
+     * @param \AppBundle\Entity\Museum $museum
+     *
+     * @return Artwork
+     */
+    public function setMuseum(\AppBundle\Entity\Museum $museum)
+    {
+        $this->museum = $museum;
+
+        return $this;
+    }
+
+    /**
+     * Get museum
+     *
+     * @return \AppBundle\Entity\Museum
+     */
+    public function getMuseum()
+    {
+        return $this->museum;
+    }
+
+    /**
+     * Set artist
+     *
+     * @param \AppBundle\Entity\Artist $artist
+     *
+     * @return Artwork
+     */
+    public function setArtist(\AppBundle\Entity\Artist $artist)
+    {
+        $this->artist = $artist;
+
+        return $this;
+    }
+
+    /**
+     * Get artist
+     *
+     * @return \AppBundle\Entity\Artist
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+}
