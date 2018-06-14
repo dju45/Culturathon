@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Artwork
  *
- * @ORM\Table(name="work_of_art")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkOfArtRepository")
+ * @ORM\Table(name="Artwork")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArtworkRepository")
  */
 class Artwork
 {
