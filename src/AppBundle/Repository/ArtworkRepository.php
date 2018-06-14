@@ -45,4 +45,14 @@ class ArtworkRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function findAllInOneCurrent($current)
+    {
+        return $this->createQueryBuilder('ar')
+            ->join('ar.current', 'c')
+            ->andWhere('c.name = :current')
+            ->setParameter('current', $current)
+            ->getQuery()
+            ->getResult();
+    }
 }

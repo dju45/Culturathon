@@ -15,31 +15,52 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
+//    public function indexAction()
+//    {
+//        $user = $this->get('security.token_storage')->getToken()->getUser();
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $currents= $em->getRepository(ArtisticCurrent::class)->seenCurrents($user);
+//
+//
+//        $impressionisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Impressionisme');
+//        $cubisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Cubisme');
+//        $fauvisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Fauvisme');
+//
+//        $nbImpressionism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Impressionisme');
+//        $nbCubism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Cubisme');
+//        $nbFauvism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Fauvisme');
+//
+//        return $this->render('default/index.html.twig', [
+//            'currents' => $currents,
+//            'user' => $user,
+//            'impressionisms' => $impressionisms,
+//            'cubisms' => $cubisms,
+//            'fauvisms' => $fauvisms,
+//            'nbImpressionism' => $nbImpressionism,
+//            'nbCubism' => $nbCubism,
+//            'nbFauvism' => $nbFauvism,
+//        ]);
+//    }
+
+    /**
+     * @Route("/", name="homepage")
+     */
     public function indexAction()
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
         $em = $this->getDoctrine()->getManager();
-        $currents= $em->getRepository(ArtisticCurrent::class)->seenCurrents($user);
 
+        $currents= $em->getRepository(ArtisticCurrent::class)->findAll();
 
-        $impressionisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Impressionisme');
-        $cubisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Cubisme');
-        $fauvisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Fauvisme');
+        foreach ($currents as $current) {
+            $artworks[$current->getName()]= $em->getRepository(Artwork::class)->findByCurrent($current);
+        }
 
-        $nbImpressionism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Impressionisme');
-        $nbCubism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Cubisme');
-        $nbFauvism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Fauvisme');
 
         return $this->render('default/index.html.twig', [
-            'currents' => $currents,
-            'user' => $user,
-            'impressionisms' => $impressionisms,
-            'cubisms' => $cubisms,
-            'fauvisms' => $fauvisms,
-            'nbImpressionism' => $nbImpressionism,
-            'nbCubism' => $nbCubism,
-            'nbFauvism' => $nbFauvism,
+            'artworksByCurrent' => $artworks,
         ]);
     }
+
+
 }
