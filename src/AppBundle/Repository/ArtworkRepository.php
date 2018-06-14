@@ -19,7 +19,7 @@ use AppTestBundle\Entity\FunctionalTests\User;
  */
 class ArtworkRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function countSeenArtworksInOnCurrent(User $user, ArtisticCurrent $current)
+    public function seenArtworksInOneCurrent($user, $current)
     {
         return $this->createQueryBuilder('ar')
             ->where('ar.users = :user')
