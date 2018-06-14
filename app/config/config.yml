@@ -105,7 +105,7 @@ easy_admin:
                       - 'size'
                       - 'description'
                       - { property: 'imageFile', type: 'vich_image' }
-                      - 'updateat'
+                      - 'updateAt'
                       - 'creationDate'
                       - 'users'
                       - 'current'
