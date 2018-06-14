@@ -49,17 +49,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $currents= $em->getRepository(ArtisticCurrent::class)->findAll();
-
-        foreach ($currents as $current) {
-            $artworks[$current->getName()]= $em->getRepository(Artwork::class)->findByCurrent($current);
-        }
-
-
         return $this->render('default/index.html.twig', [
-            'artworksByCurrent' => $artworks,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
 
@@ -72,9 +63,19 @@ class DefaultController extends Controller
      */
     public function pokedexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $currents= $em->getRepository(ArtisticCurrent::class)->findAll();
+        $artworks = [];
+        foreach ($currents as $current) {
+            $artworks[$current->getName()]= $em->getRepository(Artwork::class)->findByCurrent($current);
+        }
+
+
         return $this->render('default/pokedex.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'artworksByCurrent' => $artworks,
         ]);
+
     }
 
     /**
