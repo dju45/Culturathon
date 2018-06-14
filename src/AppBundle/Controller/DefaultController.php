@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\ArtisticCurrent;
 use AppBundle\Entity\Artwork;
 use FOS\UserBundle\Model\UserInterface;
 use http\Env\Request;
@@ -17,13 +18,28 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $current = 'Impressionisme';
+
         $em = $this->getDoctrine()->getManager();
-        $artworks= $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, $current);
+        $currents= $em->getRepository(ArtisticCurrent::class)->seenCurrents($user);
+
+
+        $impressionisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Impressionisme');
+        $cubisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Cubisme');
+        $fauvisms = $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, 'Fauvisme');
+
+        $nbImpressionism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Impressionisme');
+        $nbCubism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Cubisme');
+        $nbFauvism = $em->getRepository(Artwork::class)->seenArtworksNbInOneCurrent($user, 'Fauvisme');
 
         return $this->render('default/index.html.twig', [
+            'currents' => $currents,
             'user' => $user,
-            'artworks' => $artworks,
+            'impressionisms' => $impressionisms,
+            'cubisms' => $cubisms,
+            'fauvisms' => $fauvisms,
+            'nbImpressionism' => $nbImpressionism,
+            'nbCubism' => $nbCubism,
+            'nbFauvism' => $nbFauvism,
         ]);
     }
 }

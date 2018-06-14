@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class ArtisticCurrentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function seenCurrents ($user)
+    {
+        return $this->createQueryBuilder('ac')
+            ->join('ac.artworks', 'a')
+            ->join('a.users', 'u')
+            ->where('u.id = :user ')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

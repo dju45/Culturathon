@@ -31,4 +31,18 @@ class ArtworkRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function seenArtworksNbInOneCurrent($user, $current)
+    {
+        return $this->createQueryBuilder('ar')
+            ->select('count(ar.id)')
+            ->join('ar.users', 'u')
+            ->where('u.id = :user ')
+            ->setParameter('user', $user)
+            ->join('ar.current', 'c')
+            ->andWhere('c.name = :current')
+            ->setParameter('current', $current)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
