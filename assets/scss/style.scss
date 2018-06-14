@@ -1,0 +1,34 @@
+/* Classe principale de la barre de navigation */
+.navbar {
+  /* Couleur de fond de la barre de navigation */
+  background-color: black;
+  border-color: #E7E7E7;
+}
+
+/* Couleur des titres affichés dans la barre */
+.navbar-default .navbar-brand {
+  color: mediumvioletred;
+  font-size: 1.6em !important;
+}
+
+/* Couleur utilisée pour les liens */
+.navbar-default .navbar-nav > li > a {
+  color: whitesmoke;
+  font-size: 1.2em !important;
+}
+
+/* Couleur utilisée pour les liens lorsque la souris passe dessus */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: whitesmoke;
+  background-color: mediumvioletred;
+}
+
+
+/* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: mediumvioletred;
+}

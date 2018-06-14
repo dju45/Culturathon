@@ -13,9 +13,13 @@ Encore
     .addEntry('demo', './assets/js/demo.js')
     .addEntry('imagesloaded.pkgd.min', './assets/js/imagesloaded.pkgd.min.js')
     .addEntry('TweenMax.min', './assets/js/TweenMax.min.js')
+    .addEntry('menuburger', './assets/js/menuburger.js')
+    .addEntry('demo1', './assets/js/demo1.js')
 
+    .addEntry('style', './assets/scss/style.scss')
     .addEntry('main', './assets/scss/main.scss')
     .addEntry('base', './assets/scss/base.scss')
+    .addEntry('demoburger', './assets/scss/demoburger.scss')
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
