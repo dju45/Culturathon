@@ -8,6 +8,7 @@
 
 namespace AppBundle\Repository;
 
+
 use AppBundle\Entity\ArtisticCurrent;
 use AppTestBundle\Entity\FunctionalTests\User;
 
@@ -30,3 +31,4 @@ class ArtworkRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 }
+
