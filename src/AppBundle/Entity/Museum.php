@@ -169,4 +169,9 @@ class Museum
     {
         return $this->artworks;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

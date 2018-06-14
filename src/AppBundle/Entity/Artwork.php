@@ -354,4 +354,9 @@ class Artwork
     {
         return $this->artist;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }
