@@ -94,6 +94,15 @@ easy_admin:
 #        - AppBundle\Entity\Artist
           Museum:
               class: AppBundle\Entity\Museum
+              form:
+                  title:    "Ajout de Musée"
+                  fields:
+                  - 'name'
+                  - { property: 'imageFile', type: 'vich_image' }
+                  - 'city'
+                  - 'address'
+                  - 'artworks'
+
           ArtisticCurrent:
               class: AppBundle\Entity\ArtisticCurrent
           Artwork:
@@ -105,7 +114,6 @@ easy_admin:
                       - 'size'
                       - 'description'
                       - { property: 'imageFile', type: 'vich_image' }
-                      - 'updateAt'
                       - 'creationDate'
                       - 'users'
                       - 'current'
