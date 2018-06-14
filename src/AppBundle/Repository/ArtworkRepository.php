@@ -20,15 +20,6 @@ use AppTestBundle\Entity\FunctionalTests\User;
  */
 class ArtworkRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function seenArtworksInOneCurrent($user, $current)
-    {
-        return $this->createQueryBuilder('ar')
-            ->where('ar.users = :user')
-            ->setParameter('user', $user)
-            ->andWhere('ar.current = :current')
-            ->setParameter('current', $current)
-            ->getQuery()
-            ->getResult();
-    }
+
 }
 

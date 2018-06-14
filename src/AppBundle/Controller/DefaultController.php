@@ -16,14 +16,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $current = 'Impressionisme';
         $em = $this->getDoctrine()->getManager();
-        $artworks= $em->getRepository(Artwork::class)->seenArtworksInOneCurrent($user, $current);
 
-        return $this->render('default/index.html.twig', [
-            'user' => $user,
-            'artworks' => $artworks,
-        ]);
+        return $this->render('default/index.html.twig');
     }
 }
