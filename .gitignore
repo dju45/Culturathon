@@ -17,4 +17,5 @@
 /node_modules/*
 /web/build/*
 /web/bundles/
-/src/AppBundle/Entity/*.php~
+/src/AppBundle/Entity/*~    
+

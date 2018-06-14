@@ -3,8 +3,10 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArtworkType extends AbstractType
 {
@@ -13,8 +15,20 @@ class ArtworkType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('type')->add('size')->add('description')->add('picture')->add('creationDate');
-    }/**
+        $builder->add('title')
+            ->add('type')
+            ->add('size')
+            ->add('description')
+            ->add('imageFile', VichImageType::class)
+            ->add('updateAt')
+            ->add('creationDate')
+            ->add('users')
+            ->add('current')
+            ->add('museum')
+            ->add('artist');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
