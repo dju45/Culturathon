@@ -31,4 +31,13 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/museum", name="museum")
+     */
+    public function museumAction()
+    {
+
+        return $this->render('museum/index.html.twig');
+    }
+
 }
