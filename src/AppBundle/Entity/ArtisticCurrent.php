@@ -28,6 +28,10 @@ class ArtisticCurrent
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="current")
+     */
+    private $artworks;
 
     /**
      * Get id
@@ -62,5 +66,45 @@ class ArtisticCurrent
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->artworks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     *
+     * @return ArtisticCurrent
+     */
+    public function addArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks[] = $artwork;
+
+        return $this;
+    }
+
+    /**
+     * Remove artwork
+     *
+     * @param \AppBundle\Entity\Artwork $artwork
+     */
+    public function removeArtwork(\AppBundle\Entity\Artwork $artwork)
+    {
+        $this->artworks->removeElement($artwork);
+    }
+
+    /**
+     * Get artworks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArtworks()
+    {
+        return $this->artworks;
+    }
+}
