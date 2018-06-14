@@ -36,7 +36,6 @@ class User extends BaseUser
      */
     private $lastname;
 
-
     public function __construct()
     {
         parent::__construct();
