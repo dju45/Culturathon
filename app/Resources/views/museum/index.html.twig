@@ -6,7 +6,8 @@
         <div class="gallery cf">
             <div class="image">
                 <figure>
-                    <img src="http://images.telemetro.com/internacionales/Museo-Guggenheim-retirara-FotoTomada-FB_MEDIMA20170927_0067_31.jpg" alt="" />
+                    <img src="http://images.telemetro.com/internacionales/Museo-Guggenheim-retirara-FotoTomada-FB_MEDIMA20170927_0067_31.jpg"
+                         alt=""/>
                 </figure>
                 <figcaption>
                     Musée Guggenheim
@@ -14,7 +15,8 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://o.aolcdn.com/images/dims3/GLOB/crop/6236x3124+10+0/resize/630x315!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2Ff5941069af3e785c42035d019aaf239a%2F206279735%2Flouvre-pyramid-at-night-picture-id540091911" alt="" />
+                    <img src="https://o.aolcdn.com/images/dims3/GLOB/crop/6236x3124+10+0/resize/630x315!/format/jpg/quality/85/http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2Ff5941069af3e785c42035d019aaf239a%2F206279735%2Flouvre-pyramid-at-night-picture-id540091911"
+                         alt=""/>
                 </figure>
                 <figcaption>
                     Musée du louvre
@@ -22,7 +24,7 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://assets.londonist.com/uploads/2017/01/i875/concourse.jpg" alt="" />
+                    <img src="https://assets.londonist.com/uploads/2017/01/i875/concourse.jpg" alt=""/>
                 </figure>
                 <figcaption>
                     British Museum
@@ -30,7 +32,7 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://news.artnet.com/app/news-upload/2015/05/Rijksmuseum.jpg" alt="" />
+                    <img src="https://news.artnet.com/app/news-upload/2015/05/Rijksmuseum.jpg" alt=""/>
                 </figure>
                 <figcaption>
                     Rijksmuseum
@@ -38,7 +40,8 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://ohfact2-cyberpanthers.netdna-ssl.com/wp-content/uploads/2017/04/Metropolitan-Museum-of-Art.jpg" alt="" />
+                    <img src="https://ohfact2-cyberpanthers.netdna-ssl.com/wp-content/uploads/2017/04/Metropolitan-Museum-of-Art.jpg"
+                         alt=""/>
                 </figure>
                 <figcaption>
                     Metropolitan Museum of Art
@@ -46,7 +49,7 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://cdn.getyourguide.com/img/tour_img-482154-92.jpg" alt="" />
+                    <img src="https://cdn.getyourguide.com/img/tour_img-482154-92.jpg" alt=""/>
                 </figure>
                 <figcaption>
                     Musée du Prado
@@ -54,7 +57,8 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="https://www.telegraph.co.uk/content/dam/Travel/leadAssets/21/58/national-gallery62_2158742a.jpg?imwidth=450" alt="" />
+                    <img src="https://www.telegraph.co.uk/content/dam/Travel/leadAssets/21/58/national-gallery62_2158742a.jpg?imwidth=450"
+                         alt=""/>
                 </figure>
                 <figcaption>
                     National Gallery
@@ -62,7 +66,8 @@
             </div>
             <div class="image">
                 <figure>
-                    <img src="http://www.orleans-metropole.fr/fileadmin/_processed_/csm_musee_historique_archelogique_cabu_salle_3f2d397c15.jpg" alt="" />
+                    <img src="http://www.orleans-metropole.fr/fileadmin/_processed_/csm_musee_historique_archelogique_cabu_salle_3f2d397c15.jpg"
+                         alt=""/>
                 </figure>
                 <figcaption>
                     Musée d'Histoire et d'Archéologie
@@ -71,41 +76,4 @@
 
         </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>City</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for museum in museums %}
-            <tr>
-                <td><a href="{{ path('museum_show', { 'id': museum.id }) }}">{{ museum.id }}</a></td>
-                <td>{{ museum.name }}</td>
-                <td>{{ museum.city }}</td>
-                <td>{{ museum.address }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('museum_show', { 'id': museum.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('museum_edit', { 'id': museum.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('museum_new') }}">Create a new museum</a>
-        </li>
-    </ul>
 {% endblock %}
