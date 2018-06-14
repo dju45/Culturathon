@@ -1,4 +1,5 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+
 /* Classe principale de la barre de navigation */
 .bgnav {
   /* Couleur de fond de la barre de navigation */
@@ -20,4 +21,78 @@
 }
 
 
+
+=======
+
+*{
+  margin: 0;
+  padding:0;
+}
+.cf:before,.cf:after{
+  content: '';
+  display: table;
+}
+.cf:after{
+  clear:both;
+}
+h1{
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 10px;
+  color:#444;
+  background-color: darkgrey;
+  padding: 10px;
+  font-size: 40px;
+}
+.container{
+  position: relative;
+  margin: -10px auto;
+  max-width: 100%;
+  background-color: black;
+  padding: 10px;
+  border:1px solid #c5c5c5;
+}
+
+.gallery{
+  width: 100%;
+  overflow: hidden;
+}
+
+.image{
+  display: inline-block;
+  padding: 2%;
+  background-color: grey;
+  margin: 1%;
+  width: 20%;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  text-align: center;
+  border:10px solid #c3c3c3;
+  cursor: pointer;
+}
+
+.image figure{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.image figure img{
+  width: 100%;
+}
+
+figcaption{
+  background-color: rgba(0,0,0,0.8);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  cursor: pointer;
+  color: slategrey;
+  max-width:100%;
+  font-weight: bold;
+}
+
+figcaption:hover{
+  color: #fff;
+}
 

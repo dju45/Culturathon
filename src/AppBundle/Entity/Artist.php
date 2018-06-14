@@ -59,7 +59,7 @@ class Artist
     /**
      * @var string
      *
-     * @ORM\Column(name="Biography", type="string", length=250)
+     * @ORM\Column(name="Biography", type="text")
      */
     private $biography;
 
@@ -261,5 +261,10 @@ class Artist
     public function getArtworks()
     {
         return $this->artworks;
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 }

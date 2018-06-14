@@ -3,12 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Artwork
  *
  * @ORM\Table(name="Artwork")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArtworkRepository")
+ * @Vich\Uploadable
  */
 class Artwork
 {
@@ -52,14 +56,31 @@ class Artwork
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     *
+     *
      */
-    private $picture;
+    private $image;
+
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="artwork_img", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $updateAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="creationDate", type="string", length=255)
+     * @ORM\Column(name="creationDate", type="datetime")
      */
     private $creationDate;
 
@@ -87,6 +108,43 @@ class Artwork
      * @ORM\JoinColumn(nullable=false)
      */
     private $artist;
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param \DateTime $updateAt
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+    }
+
+    /**
+     * @param File|null $image
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            $this->updateAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
 
     /**
      * Get id
@@ -195,33 +253,33 @@ class Artwork
     }
 
     /**
-     * Set picture
+     * Set image
      *
-     * @param string $picture
+     * @param string $image
      *
      * @return Artwork
      */
-    public function setPicture($picture)
+    public function setImage($image)
     {
-        $this->picture = $picture;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get picture
+     * Get image
      *
      * @return string
      */
-    public function getPicture()
+    public function getImage()
     {
-        return $this->picture;
+        return $this->image;
     }
 
     /**
      * Set creationDate
      *
-     * @param string $creationDate
+     * @param \DateTime $creationDate
      *
      * @return Artwork
      */
@@ -353,5 +411,10 @@ class Artwork
     public function getArtist()
     {
         return $this->artist;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }
