@@ -2,29 +2,10 @@
 
 {% block body %}
 
-
 <div class="container-fluid pl-0 pr-0">
 
 <img src="img/home2.jpg" class="img-responsive" width =100% height="100%">
 
 </div>
 
-
-
-    <div>
-        {% for current, artworks in artworksByCurrent %}
-            <h2>{{ current }}</h2>
-            <ul>
-                {% for artwork in artworks %}
-                    <li>
-                        {{ artwork.title }}
-                        {% for user in artwork.users if user == app.user %}
-                            vu
-                        {% endfor %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </div>
- 
 {% endblock %}
