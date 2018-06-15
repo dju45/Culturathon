@@ -1,56 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Artwork</h1>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ artwork.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ artwork.title }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ artwork.type }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ artwork.size }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ artwork.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ artwork.image }}</td>
-            </tr>
-            <tr>
-                <th>Updateat</th>
-                <td>{% if artwork.updateAt %}{{ artwork.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Creationdate</th>
-                <td>{% if artwork.creationDate %}{{ artwork.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1 class="bg-transparent">{{ artwork.title }}</h1>
+        <h2 class="text-center">{{ artwork.artist.firstname }} {{ artwork.artist.lastname }}</h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('artwork_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('artwork_edit', { 'id': artwork.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="container bg-transparent">
+        <div class="row">
+            <div class="col-4"><img class="img-fluid" src="{{ vich_uploader_asset(artwork, 'imageFile') }}" alt="{{ artwork.title }}"></div>
+            <div class="col-8"><p>{{ artwork.description|nl2br }}</p></div>
+        </div>
+        <div class="text-center">
+            <a class ="btn btn-dark" href="{{ path('pokedex') }}">Ma collection</a>
+        </div>
 {% endblock %}

@@ -73,6 +73,8 @@ class ArtworkController extends Controller
         if (!in_array($user, $visitors)) {
             $artwork->addUser($user);
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Vous venez d\'ajouter cette oeuvre à votre collection !');
+
         }
 
 
