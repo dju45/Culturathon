@@ -256,7 +256,7 @@ main {
 
 
 .grid__item:hover .box__img:not(.box__img--original) {
-  filter: grayscale(0);
+  filter: grayscale(1);
 }
 
 .grid__itemon:hover .box__img:not(.box__img--original) {

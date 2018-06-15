@@ -3,22 +3,6 @@
 {% block body %}
 
 
-    <div>
-        {% for current, artworks in artworksByCurrent %}
-            <h2>{{ current }}</h2>
-            <ul>
-                {% for artwork in artworks %}
-                    <li>
-                        {{ artwork.title }}
-                        {% for user in artwork.users if user == app.user %}
-                            vu
-                        {% endfor %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-
-    </div>
 
     <div class="content mt-5">
         <div class="grid">
