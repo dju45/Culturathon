@@ -1,125 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div>
-        {% for current, artworks in artworksByCurrent %}
-            <h2>{{ current }}</h2>
-            <ul>
-                {% for artwork in artworks %}
-                    <li>
-                        {{ artwork.title }}
-                        {% for user in artwork.users if user == app.user %}
-                            vu
-                        {% endfor %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </div>
+
+
 
     <div class="content mt-5">
         <div class="grid">
-            <a class="grid__item" href="#preview-1">
+            {% for current, artworks in artworksByCurrent %}
+            {% for artwork in artworks %}
+            <a class="grid__item" href="#{% for user in artwork.users if user == app.user %}{{ artwork.title }}{% endfor %}">
                 <div class="box">
                     <div class="box__shadow"></div>
-                    <img class="box__img" src="img/1.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
+                    <img class="box__img{% for user in artwork.users if user == app.user %}on{% endfor %}" src="img/1.jpg" alt="Some image"/>
+                    <h3 class="box__title"><span class="box__title-inner" data-hover="{{ artwork.museum.name }}">{{ artwork.museum.name }}</span></h3>
+                    <h4 class="box__text"><span class="box__text-inner">{{ artwork.artist.lastName }}</span></h4>
+                    <p class="box__content">{{ artwork.title }}</p>
                 </div>
             </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
+            {% endfor %}
+            {% endfor %}
+        </div>
 
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
-            <a class="grid__item" href="#preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img" src="img/2.jpg" alt="Some image"/>
-                    <h3 class="box__title"><span class="box__title-inner" data-hover="Madrid">Madrid</span></h3>
-                    <h4 class="box__text"><span class="box__text-inner">Salvador Dali</span></h4>
-                    <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
-                </div>
-            </a>
+
+    <div class="overlay">
+        <div class="overlay__reveal"></div>
+        {% for current, artworks in artworksByCurrent %}
+        {% for artwork in artworks %}
+            {% for user in artwork.users if user == app.user %}
+        <div class="overlay__item" id="{{ artwork.title }}">
+            <div class="box">
+                <div class="box__shadow"></div>
+                <img class="box__img box__img--original" src="img/original/1.jpg" alt="Some image"/>
+                <h3 class="box__title"><span class="box__title-inner">{{ artwork.museum.name }}</span></h3>
+                <h4 class="box__text"><span class="box__text-inner">{{ artwork.artist.firstName }} {{ artwork.artist.lastName }}</span></h4>
+                <div class="box__deco">&#10014;</div>
+            </div>
+            <p class="overlay__content">{{ artwork.description }}</p>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
     </div>
+
+
+
+
+
     <div class="overlay">
         <div class="overlay__reveal"></div>
         <div class="overlay__item" id="preview-1">
