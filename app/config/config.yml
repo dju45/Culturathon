@@ -84,7 +84,7 @@ fos_user:
 
 easy_admin:
     design:
-            brand_color: '#f056ff'
+            brand_color: 'black'
 
     entities:
         # change the following to the namespaces of your own entities
@@ -94,10 +94,35 @@ easy_admin:
 #        - AppBundle\Entity\Artist
           Museum:
               class: AppBundle\Entity\Museum
+              form:
+                  title:    "Ajout de Musée"
+                  fields:
+                  - 'name'
+                  - { property: 'imageFile', type: 'vich_image' }
+                  - 'city'
+                  - 'address'
+                  - 'artworks'
+
           ArtisticCurrent:
               class: AppBundle\Entity\ArtisticCurrent
           Artwork:
               class: AppBundle\Entity\Artwork
+              form:
+                  title:    "Ajout d'oeuvre"
+                  fields:
+                      - 'type'
+                      - 'size'
+                      - 'description'
+                      - { property: 'imageFile', type: 'vich_image' }
+                      - 'creationDate'
+                      - 'users'
+                      - 'current'
+                      - 'museum'
+                      - 'artist'
+              edit:
+                  title:    "Modification de l'oeuvre"
+
+
           Artist:
               class: AppBundle\Entity\Artist
 

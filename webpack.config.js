@@ -14,8 +14,11 @@ Encore
     .addEntry('imagesloaded.pkgd.min', './assets/js/imagesloaded.pkgd.min.js')
     .addEntry('TweenMax.min', './assets/js/TweenMax.min.js')
 
+
+    .addEntry('style', './assets/scss/style.scss')
     .addEntry('main', './assets/scss/main.scss')
     .addEntry('base', './assets/scss/base.scss')
+
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()

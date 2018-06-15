@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Museum
  *
  * @ORM\Table(name="museum")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MuseumRepository")
+ * @Vich\Uploadable
  */
 class Museum
 {
@@ -28,6 +30,30 @@ class Museum
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     *
+     *
+     */
+    private $image;
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="artwork_img", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $updateAt;
+
     /**
      * @var string
      *
@@ -46,6 +72,61 @@ class Museum
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Artwork", mappedBy="museum")
      */
     private $artworks;
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     */
+    public function setImageFile($imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updateAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param \DateTime $updateAt
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+    }
+
+
+
 
     /**
      * Get id

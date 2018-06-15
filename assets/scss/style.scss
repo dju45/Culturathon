@@ -1,0 +1,41 @@
+/* Classe principale de la barre de navigation */
+.navbar {
+  /* Couleur de fond de la barre de navigation */
+  background-color: black;
+  border-color: #E7E7E7;
+}
+
+/* Couleur des titres affichés dans la barre */
+.navbar-default .navbar-brand {
+  color: mediumvioletred;
+  font-size: 2em !important;
+}
+
+/* Couleur utilisée pour les liens */
+.navbar-default .navbar-nav > li > a {
+  color: whitesmoke;
+  font-size: 1.2em !important;
+}
+
+/* Couleur utilisée pour les liens lorsque la souris passe dessus */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: whitesmoke;
+  background-color: mediumvioletred;
+}
+
+
+/* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: mediumvioletred;
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: mediumvioletred;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='mediumvioletred' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}

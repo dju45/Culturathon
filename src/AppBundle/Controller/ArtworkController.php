@@ -67,6 +67,17 @@ class ArtworkController extends Controller
     {
         $deleteForm = $this->createDeleteForm($artwork);
 
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $visitors = $artwork->getUsers()->getValues();
+
+        if (!in_array($user, $visitors)) {
+            $artwork->addUser($user);
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Vous venez d\'ajouter cette oeuvre à votre collection !');
+
+        }
+
+
         return $this->render('artwork/show.html.twig', array(
             'artwork' => $artwork,
             'delete_form' => $deleteForm->createView(),
