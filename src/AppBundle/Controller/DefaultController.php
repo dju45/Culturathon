@@ -78,6 +78,27 @@ class DefaultController extends Controller
 
     }
 
+
+    /**
+     * @Route("/run", name="run")
+     */
+    public function runAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $currents= $em->getRepository(ArtisticCurrent::class)->findAll();
+        $artworks = [];
+        foreach ($currents as $current) {
+            $artworks[$current->getName()]= $em->getRepository(Artwork::class)->findByCurrent($current);
+        }
+
+
+        return $this->render('default/parcours.html.twig', [
+            'artworksByCurrent' => $artworks,
+        ]);
+
+    }
+
     /**
      * @Route("/museum", name="museum")
      */
